@@ -1,14 +1,22 @@
 #include <iostream>
 #include <string>
 
-#include "include/define.h"
 #include "include/Ceaser.h"
+#include "include/RailFence.h"
 
 int main() {
+
+    char ALPHA[26] = {'a', 'b', 'c', 'd', 'e',
+                      'f', 'g', 'h', 'i', 'j',
+                      'k', 'l', 'm', 'n', 'o',
+                      'p', 'q', 'r', 's', 't',
+                      'u', 'v', 'w', 'x', 'y',
+                      'z'};
 
     int keyPress = 0;
     int inputKey;
     Ceaser ceaser;
+    RailFence railFence;
 
     std::string inputString;
 
@@ -16,7 +24,6 @@ int main() {
      * This is the section that deals with prompting the user
      * for which cipher they would like to use.
      */
-
     std::cout << "Hello, World!" << std::endl;
     std::cout << "What Kind of Cipher would you like to use?" << std::endl;
     std::cout << "Please input a 1-5 to decide which you would like." << std::endl << std::endl;
@@ -57,6 +64,7 @@ int main() {
                     break;
                 case 4:
                     std::cout << "You have chosen Rail Fence Cipher" << std:: endl;
+                    railFence.Encrypt();
                     break;
                 case 5:
                     std::cout << "You have chosen Row Transposition Cipher" << std::endl;
@@ -70,6 +78,7 @@ int main() {
             std::cout << "This number is not in the given menu" << std::endl;
         }
     }
+
 
     return 0;
 }
