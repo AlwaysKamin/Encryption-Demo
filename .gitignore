@@ -1,0 +1,5 @@
+#ignore the object files
+.o
+
+#ignored header compilation
+.h.gch
