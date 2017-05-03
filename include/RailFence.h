@@ -15,6 +15,7 @@ class RailFence
     std::string plainText[100];
     std::string topRailText[50];
     std::string bottomRailText[50];
+    std::string cipherText[50];
 };
 
 #endif //RAILFENCE_H
