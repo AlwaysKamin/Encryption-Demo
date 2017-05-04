@@ -5,6 +5,7 @@
 #include "include/Ceaser.h"
 #include "include/RailFence.h"
 #include "include/MonoAlpha.h"
+#include "include/RowTrans.h"
 
 bool validateInput(std::string inputText);
 void parseInput(std::string &inputText);
@@ -23,9 +24,11 @@ int main() {
     int inputKey;
     std::string stringKey;
     std::string inputText;
+
     Ceaser ceaser;
     RailFence railFence;
     MonoAlpha monoAlpha;
+    RowTrans rowTrans;
 
     std::string inputString;
 
@@ -36,6 +39,8 @@ int main() {
     std::cout << "--------------------------------------------------------------" << std::endl;
     std::cout << "              Welcome to the NCS 320 Cipher Demo              " << std::endl;
     std::cout << " Plain Text Rule: Plain text must be less than 100 characters " << std::endl;
+    std::cout << "            Shift Key Rule: Any positive integer              " << std::endl;
+    std::cout << "   Letter Key Rule: 26 unique letters seperated by no spaces  " << std::endl;
     std::cout << "--------------------------------------------------------------" << std::endl;
     std::cout << "                Please input your string now:                 ";
     std::cout << std::endl;
@@ -98,6 +103,9 @@ int main() {
                     break;
                 case 5:
                     std::cout << "You have chosen Row Transposition Cipher" << std::endl;
+                    rowTrans.getKeys();
+                    rowTrans.Encrypt(inputText);
+                    rowTrans.displayCipher();
                     break;
                 default:
                     std::cout << "Something went really wrong" << std::endl;
