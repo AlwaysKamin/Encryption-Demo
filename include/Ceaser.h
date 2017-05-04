@@ -10,12 +10,13 @@
 #include <iostream>
 class Ceaser{
   public:
-    void CeaserEncrypt(int key);
+    void Encrypt(int key, std::string plainText,  char* ALPHA);
     std::string CeaserDecrypt();
 
-    int testKey = 12;
-    std::string plainText[100];
-    std::string cipherText[100];
+    void displayCipher();
+
+    int testKey;
+    std::string cipherText;
 };
 
 #endif //CIPHERS_CEASER_H

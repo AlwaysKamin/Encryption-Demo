@@ -71,7 +71,8 @@ int main() {
                     std::cout << "Please insert the number you would like to shift by" << std::endl;
                     std::cin >> inputKey;
 
-                    ceaser.CeaserEncrypt(inputKey);
+                    ceaser.Encrypt(inputKey, inputText, ALPHA);
+                    ceaser.displayCipher();
                     break;
                 case 2:
                     std::cout << "You have chosen Monoalphabetic Cipher" << std::endl;
