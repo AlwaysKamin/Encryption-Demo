@@ -4,9 +4,11 @@
 
 #include "include/Ceaser.h"
 #include "include/RailFence.h"
+#include "include/MonoAlpha.h"
 
 bool validateInput(std::string inputText);
 void parseInput(std::string &inputText);
+bool validateKey(std::string stringKey);
 
 int main() {
 
@@ -19,10 +21,11 @@ int main() {
 
     int keyPress = 0;
     int inputKey;
-    char input[100];
+    std::string stringKey;
     std::string inputText;
     Ceaser ceaser;
     RailFence railFence;
+    MonoAlpha monoAlpha;
 
     std::string inputString;
 
@@ -70,12 +73,20 @@ int main() {
                     std::cout << "You have chosen Ceaser Cipher" << std::endl;
                     std::cout << "Please insert the number you would like to shift by" << std::endl;
                     std::cin >> inputKey;
-
                     ceaser.Encrypt(inputKey, inputText, ALPHA);
                     ceaser.displayCipher();
                     break;
                 case 2:
                     std::cout << "You have chosen Monoalphabetic Cipher" << std::endl;
+                    std::cout << "Please insert a 26 character key: " << std::endl;
+
+                    do {
+                      std::cin >> stringKey;
+                    } while(validateKey(stringKey) == false);
+
+                    monoAlpha.Encrypt(inputText, stringKey, ALPHA);
+                    monoAlpha.displayCipher();
+
                     break;
                 case 3:
                     std::cout << "You have chosen Playfair Cipher" << std::endl;
@@ -113,6 +124,18 @@ bool validateInput(std::string inputText)
   if(inputText.length() > 100)
   {
     std::cout << "You inputed to many characters, please try again." << std::endl;
+    return false;
+  }else
+  {
+    return true;
+  }
+}
+
+bool validateKey(std::string stringKey)
+{
+  if(stringKey.length() != 26)
+  {
+    std::cout << "Your key was the wrong length, I need 26 exactly... sorry" << std::endl;
     return false;
   }else
   {
