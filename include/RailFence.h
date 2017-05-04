@@ -12,12 +12,9 @@ class RailFence
     void displayCipher();
 
   private:
-    //char topRailText[50];    //Holds the characters that reside in the top rail
-    //char bottomRailText[50]; //Holds the characters that reside in the bot rail
-    //char cipherText[100];    //Holds the cipher text after all minipulation
-    std::string topRailText;
-    std::string bottomRailText;
-    std::string cipherText;
+    std::string topRailText;     //Holds the characters that reside in the top rail
+    std::string bottomRailText;  //Holds the characters that reside in the bot rail
+    std::string cipherText;      //Holds the cipher text after all minipulation
 };
 
 #endif //RAILFENCE_H
