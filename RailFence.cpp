@@ -14,12 +14,10 @@ void RailFence::Encrypt(std::string &plainText)
       if(i % 2 == false)
       {
         topRailText.insert(t, 1, plainText[i]);
-        //topRailText[t] = plainText[i];
         t++;
       }else
       {
         bottomRailText.insert(b, 1, plainText[i]);
-        //bottomRailText[b] = plainText[i];
         b++;
       }
   }

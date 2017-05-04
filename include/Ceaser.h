@@ -12,9 +12,9 @@ class Ceaser{
   public:
     void Encrypt(int key, std::string plainText,  char* ALPHA);
     std::string CeaserDecrypt();
-
     void displayCipher();
 
+  private:
     int testKey;
     std::string cipherText;
 };

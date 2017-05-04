@@ -12,6 +12,8 @@ class RailFence
     void displayCipher();
 
   private:
+    int b;                       //counter for the bottom rail
+    int t;                       //counter for the top rail
     std::string topRailText;     //Holds the characters that reside in the top rail
     std::string bottomRailText;  //Holds the characters that reside in the bot rail
     std::string cipherText;      //Holds the cipher text after all minipulation

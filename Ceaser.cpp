@@ -3,22 +3,30 @@
 //
 #include "include/Ceaser.h"
 
+/*
+* Deals with the encryption, gets sent the plaintext after it
+* was parsed in the parseInput function in main.cpp. It was also
+* passed the alphabet in a character array, and a key for shifting
+*/
 void Ceaser::Encrypt(int key, std::string plainText, char* ALPHA)
 {
 
     for(int i = 0; i < plainText.length(); i++)
     {
-        //cipherText.insert(i, 1, (plainText[i] + key));
         for(int j = 0; j < 26; j++)
         {
           if(ALPHA[j] == plainText[i])
           {
+            //inserts the key# of leters over and places that in the cipher text spot
             cipherText.insert(i, 1, ALPHA[(j + key) % 26]);
           }
         }
     }
 }
 
+/*
+* Simply prints the cipher to the screen
+*/
 void Ceaser::displayCipher()
 {
   std::cout << cipherText << std::endl;
