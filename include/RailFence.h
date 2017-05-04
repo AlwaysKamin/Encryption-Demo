@@ -3,19 +3,21 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
 
 class RailFence
 {
   public:
-    RailFence();
-    void Encrypt();
+    void Encrypt(std::string &plainText);
+    void displayCipher();
 
   private:
-    int MAX;
-    std::string plainText[100];
-    std::string topRailText[50];
-    std::string bottomRailText[50];
-    std::string cipherText[50];
+    //char topRailText[50];    //Holds the characters that reside in the top rail
+    //char bottomRailText[50]; //Holds the characters that reside in the bot rail
+    //char cipherText[100];    //Holds the cipher text after all minipulation
+    std::string topRailText;
+    std::string bottomRailText;
+    std::string cipherText;
 };
 
 #endif //RAILFENCE_H

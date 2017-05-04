@@ -1,8 +1,12 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 #include "include/Ceaser.h"
 #include "include/RailFence.h"
+
+bool validateInput(std::string inputText);
+void parseInput(std::string &inputText);
 
 int main() {
 
@@ -15,6 +19,8 @@ int main() {
 
     int keyPress = 0;
     int inputKey;
+    char input[100];
+    std::string inputText;
     Ceaser ceaser;
     RailFence railFence;
 
@@ -24,7 +30,21 @@ int main() {
      * This is the section that deals with prompting the user
      * for which cipher they would like to use.
      */
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << "--------------------------------------------------------------" << std::endl;
+    std::cout << "              Welcome to the NCS 320 Cipher Demo              " << std::endl;
+    std::cout << " Plain Text Rule: Plain text must be less than 100 characters " << std::endl;
+    std::cout << "--------------------------------------------------------------" << std::endl;
+    std::cout << "                Please input your string now:                 ";
+    std::cout << std::endl;
+
+    do {
+      std::getline(std::cin, inputText);
+    } while(validateInput(inputText) == false);
+
+    std::cout << "--------------------------------------------------------------" << std::endl;
+
+    parseInput(inputText);
+
     std::cout << "What Kind of Cipher would you like to use?" << std::endl;
     std::cout << "Please input a 1-5 to decide which you would like." << std::endl << std::endl;
 
@@ -33,6 +53,7 @@ int main() {
     std::cout << "3: Playfair Cipher" << std::endl;
     std::cout << "4: Rail Fence Cipher" << std::endl;
     std::cout << "5: Row Transposition Cipher" << std::endl;
+    std::cout << std::endl;
 
     /**
      * While loop deals with keeping the programming running while
@@ -50,10 +71,6 @@ int main() {
                     std::cout << "Please insert the number you would like to shift by" << std::endl;
                     std::cin >> inputKey;
 
-                    std::cout << "Please insert the string you would like to encrypt, no longer than 100 char" << std::endl;
-                    std::cin >> inputString;
-
-
                     ceaser.CeaserEncrypt(inputKey);
                     break;
                 case 2:
@@ -64,7 +81,8 @@ int main() {
                     break;
                 case 4:
                     std::cout << "You have chosen Rail Fence Cipher" << std:: endl;
-                    railFence.Encrypt();
+                    railFence.Encrypt(inputText);
+                    railFence.displayCipher();
                     break;
                 case 5:
                     std::cout << "You have chosen Row Transposition Cipher" << std::endl;
@@ -75,10 +93,39 @@ int main() {
             }
         }else
         {
-            std::cout << "This number is not in the given menu" << std::endl;
+          std::cout << "--------------------------------------------------------------" << std::endl;
+          std::cout << " This number is not in the given menu, please select another. " << std::endl;
+          std::cout << "--------------------------------------------------------------" << std::endl;
         }
     }
 
 
     return 0;
+}
+
+/**
+* validateInput checks to make sure you are not inputing to big of a string if
+* the input is over 100 characters it will ask you to try again.
+**/
+bool validateInput(std::string inputText)
+{
+  if(inputText.length() > 100)
+  {
+    std::cout << "You inputed to many characters, please try again." << std::endl;
+    return false;
+  }else
+  {
+    return true;
+  }
+}
+
+/**
+* parse Input takes in the inputed string and uses the .erase function as well as the
+* standard remove function to find and remove all of the spaces in the function
+* as well as sets it all to lowercase.
+**/
+void parseInput(std::string &inputText)
+{
+  inputText.erase( std::remove( inputText.begin(), inputText.end(), ' ' ), inputText.end() );
+  std::transform(inputText.begin(), inputText.end(), inputText.begin(), ::tolower);
 }
