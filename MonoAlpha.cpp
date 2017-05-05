@@ -24,5 +24,7 @@ void MonoAlpha::Encrypt(std::string &plainText, std::string &stringKey, char* AL
 */
 void MonoAlpha::displayCipher()
 {
+  std::cout << std::endl;
+  std::cout << "Cipher Text: ";
   std::cout << cipherText << std::endl;
 }

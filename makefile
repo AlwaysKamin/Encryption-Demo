@@ -5,7 +5,7 @@ CC = g++
 EXE = cipherTest
 
 #included Objects
-OBJS = main.o Ceaser.o RailFence.o MonoAlpha.o RowTrans.o
+OBJS = main.o Ceaser.o RailFence.o MonoAlpha.o RowTrans.o Vigenere.o
 
 all: $(EXE)
 
@@ -31,6 +31,10 @@ MonoAlpha.o: MonoAlpha.cpp
 #compiling the RowTrans object
 RowTrans.o: RowTrans.cpp
 	$(CC) -c RowTrans.cpp
+
+#compiling the Vigenere object
+Vigenere.o: Vigenere.cpp
+	$(CC) -c Vigenere.cpp
 
 #cleanup for later
 clean:

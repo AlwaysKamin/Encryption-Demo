@@ -5,9 +5,8 @@
 */
 void RailFence::Encrypt(std::string &plainText)
 {
-  std::cout << "RailFenceEncrypt is good to go" << std::endl;
-  int b = 0;
-  int t = 0;
+  b = 0;
+  t = 0;
 
   for(int i = 0; i < plainText.length(); i ++)
   {
@@ -30,5 +29,7 @@ void RailFence::Encrypt(std::string &plainText)
 */
 void RailFence::displayCipher()
 {
+  std::cout << std::endl;
+  std::cout << "Cipher Text: ";
   std::cout << cipherText << std::endl;
 }

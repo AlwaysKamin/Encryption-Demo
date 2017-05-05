@@ -6,10 +6,13 @@
 #include "include/RailFence.h"
 #include "include/MonoAlpha.h"
 #include "include/RowTrans.h"
+#include "include/Vigenere.h"
 
 bool validateInput(std::string inputText);
 void parseInput(std::string &inputText);
 bool validateKey(std::string stringKey);
+void extendKey(std::string &stringKey);
+
 
 int main() {
 
@@ -29,6 +32,7 @@ int main() {
     RailFence railFence;
     MonoAlpha monoAlpha;
     RowTrans rowTrans;
+    Vigenere vigenere;
 
     std::string inputString;
 
@@ -58,7 +62,7 @@ int main() {
 
     std::cout << "1: Ceaser Cipher" << std::endl;
     std::cout << "2: Monoalphabetic Cipher" << std::endl;
-    std::cout << "3: Playfair Cipher" << std::endl;
+    std::cout << "3: Vigenère Cipher" << std::endl;
     std::cout << "4: Rail Fence Cipher" << std::endl;
     std::cout << "5: Row Transposition Cipher" << std::endl;
     std::cout << std::endl;
@@ -70,6 +74,7 @@ int main() {
     while(keyPress > 5 || keyPress == 0)
     {
         std::cin >> keyPress;
+        std::cout << std::endl;
         if(keyPress <= 5 && keyPress > 0)
         {
             switch(keyPress)
@@ -77,13 +82,17 @@ int main() {
                 case 1:
                     std::cout << "You have chosen Ceaser Cipher" << std::endl;
                     std::cout << "Please insert the number you would like to shift by" << std::endl;
+                    std::cout << std::endl;
                     std::cin >> inputKey;
+                    std::cout << std::endl;
+                    std::cout << std::endl;
                     ceaser.Encrypt(inputKey, inputText, ALPHA);
                     ceaser.displayCipher();
                     break;
                 case 2:
                     std::cout << "You have chosen Monoalphabetic Cipher" << std::endl;
                     std::cout << "Please insert a 26 character key: " << std::endl;
+                    std::cout << std::endl;
 
                     do {
                       std::cin >> stringKey;
@@ -94,15 +103,25 @@ int main() {
 
                     break;
                 case 3:
-                    std::cout << "You have chosen Playfair Cipher" << std::endl;
+                    std::cout << "You have chosen Vigenère Cipher" << std::endl;
+                    std::cout << "Please input a key to use: " << std::endl;
+                    std::cout << std::endl;
+                    std::cin >> stringKey;
+                    parseInput(stringKey);
+                    extendKey(stringKey);
+
+                    vigenere.Encrypt(inputText, stringKey, ALPHA);
+                    vigenere.displayCipher();
                     break;
                 case 4:
                     std::cout << "You have chosen Rail Fence Cipher" << std:: endl;
+                    std::cout << std::endl;
                     railFence.Encrypt(inputText);
                     railFence.displayCipher();
                     break;
                 case 5:
                     std::cout << "You have chosen Row Transposition Cipher" << std::endl;
+                    std::cout << std::endl;
                     rowTrans.getKeys();
                     rowTrans.Encrypt(inputText);
                     rowTrans.displayCipher();
@@ -149,6 +168,13 @@ bool validateKey(std::string stringKey)
   {
     return true;
   }
+}
+
+void extendKey(std::string &stringKey)
+{
+  do {
+    stringKey = stringKey + stringKey;
+  } while(stringKey.length() < 100);
 }
 
 /**

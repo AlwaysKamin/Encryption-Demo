@@ -19,7 +19,6 @@ void RowTrans::getKeys()
   k6 = k6 - 1;
   k7 = k7 - 1;
 
-  std::cout << k1 << k2 << k3 << k4 << k5 << k6 << k7;
 }
 
 void RowTrans::Encrypt(std::string &plainText)
@@ -48,7 +47,16 @@ void RowTrans::Encrypt(std::string &plainText)
     }
     }
   }
+}
 
+
+/*
+* Simply outputs the cipherText to the screen
+*/
+void RowTrans::displayCipher()
+{
+  std::cout << std::endl;
+  std::cout << "Cipher Text: ";
   for(int i = 0; i < 7; i++)
   {
     if(k1 == i)
@@ -117,23 +125,5 @@ void RowTrans::Encrypt(std::string &plainText)
           }
         }
     }
-  }
-}
-
-
-/*
-* Simply outputs the cipherText to the screen
-*/
-void RowTrans::displayCipher()
-{
-  std::cout << cipherText << std::endl;
-
-  for(int i = 0; i < 7; i++)
-  {
-    for(int j = 0; j < 7; j++)
-    {
-      std::cout << pText[i][j];
-    }
-    std::cout << std::endl;
   }
 }
